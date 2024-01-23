@@ -3,7 +3,6 @@ import userService from '../services/userServices';
 
 const registerUser = async (req: Request, res: Response) => {
   try {
-    // Send the entire req.body object to the registerUser service
     const user = await userService.registerUser(req.body);
 
     return res.status(201).json({ message: 'User registered successfully', user });
