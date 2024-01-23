@@ -1,0 +1,117 @@
+// Database configuration
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// Prisma Client generator
+generator client {
+  provider = "prisma-client-js"
+}
+
+// User table for storing user information
+model User {
+  userId      Int      @id @default(autoincrement())
+  email       String   @unique
+  firstName   String
+  lastName    String
+  dateOfBirth DateTime @map("date") // Map to a database column of type DATE
+  address     Json
+  phoneNumber String
+  active      Boolean  @default(true)
+
+  shoppingCart    ShoppingCart?
+  PurchaseHistory PurchaseHistory[]
+  Order           Order[]
+}
+
+// Product table for storing information about products
+model Product {
+  productId   Int     @id @default(autoincrement())
+  productName String
+  categoryId  Int
+  price       Float
+  active      Boolean @default(true)
+
+  category         Category           @relation(fields: [categoryId], references: [categoryId])
+  CartItem         CartItem[]
+  PurchasedProduct PurchasedProduct[]
+  OrderDetail      OrderDetail[]
+}
+
+// Category table for storing product categories
+model Category {
+  categoryId   Int       @id @default(autoincrement())
+  categoryName String
+  active       Boolean   @default(true)
+  Product      Product[]
+}
+
+// Order table for storing orders
+model Order {
+  orderId   Int      @id @default(autoincrement())
+  userId    Int
+  orderDate DateTime
+  status    String
+  active    Boolean  @default(true)
+
+  user         User          @relation(fields: [userId], references: [userId])
+  OrderDetails OrderDetail[]
+}
+
+// OrderDetail table for storing order details
+model OrderDetail {
+  orderDetailId Int     @id @default(autoincrement())
+  orderId       Int
+  productId     Int
+  quantity      Int
+  subtotal      Float
+  active        Boolean @default(true)
+
+  order   Order   @relation(fields: [orderId], references: [orderId])
+  product Product @relation(fields: [productId], references: [productId])
+}
+
+// ShoppingCart table for storing user's shopping cart items
+model ShoppingCart {
+  shoppingCartId Int     @id @default(autoincrement())
+  userId         Int     @unique
+  active         Boolean @default(true)
+
+  user     User       @relation(fields: [userId], references: [userId])
+  CartItem CartItem[]
+}
+
+// CartItem table for storing individual items in the shopping cart
+model CartItem {
+  cartItemId     Int     @id @default(autoincrement())
+  quantity       Int
+  productId      Int
+  shoppingCartId Int
+  active         Boolean @default(true)
+
+  product      Product      @relation(fields: [productId], references: [productId])
+  shoppingCart ShoppingCart @relation(fields: [shoppingCartId], references: [shoppingCartId])
+}
+
+// PurchaseHistory table for storing user's past purchases
+model PurchaseHistory {
+  purchaseHistoryId Int     @id @default(autoincrement())
+  userId            Int
+  active            Boolean @default(true)
+
+  user              User               @relation(fields: [userId], references: [userId])
+  purchasedProducts PurchasedProduct[]
+}
+
+// PurchasedProduct table for storing individual products in the purchase history
+model PurchasedProduct {
+  purchasedProductId Int     @id @default(autoincrement())
+  quantity           Int
+  productId          Int
+  purchaseHistoryId  Int
+  active             Boolean @default(true)
+
+  product         Product         @relation(fields: [productId], references: [productId])
+  purchaseHistory PurchaseHistory @relation(fields: [purchaseHistoryId], references: [purchaseHistoryId])
+}
