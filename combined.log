@@ -136,3 +136,7 @@
 {"level":"info","message":"POST /register","timestamp":"2024-01-23T15:51:25.519Z"}
 {"level":"info","message":"OPTIONS /register","timestamp":"2024-01-23T16:05:54.299Z"}
 {"level":"info","message":"POST /register","timestamp":"2024-01-23T16:05:54.316Z"}
+{"level":"info","message":"OPTIONS /login","timestamp":"2024-01-23T16:49:14.040Z"}
+{"level":"info","message":"POST /login","timestamp":"2024-01-23T16:49:14.055Z"}
+{"level":"info","message":"OPTIONS /logout","timestamp":"2024-01-23T16:49:16.766Z"}
+{"level":"info","message":"POST /logout","timestamp":"2024-01-23T16:49:16.776Z"}
