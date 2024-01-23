@@ -3,10 +3,8 @@ import userService from '../services/userServices';
 
 const registerUser = async (req: Request, res: Response) => {
   try {
-    const { email, password, firstName, lastName, dateOfBirth, address, phoneNo } = req.body;
-
-    // Call the registerUser service
-    const user = await userService.registerUser(email, password, firstName, lastName, dateOfBirth, address, phoneNo);
+    // Send the entire req.body object to the registerUser service
+    const user = await userService.registerUser(req.body);
 
     return res.status(201).json({ message: 'User registered successfully', user });
   } catch (error) {
@@ -15,12 +13,12 @@ const registerUser = async (req: Request, res: Response) => {
   }
 };
 
+export default registerUser;
+
 const loginUserHandler = async (req: Request, res: Response) => {
   try {
-    const { idToken } = req.body;
-
-    // Call the validateUserToken service
-    await userService.validateUserToken(idToken);
+    // Send the entire req.body object to the validateUserToken service
+    await userService.validateUserToken(req.body);
 
     return res.status(200).json({
       message: 'User logged in successfully',
@@ -32,17 +30,16 @@ const loginUserHandler = async (req: Request, res: Response) => {
   }
 };
 
-
 const logoutUserHandler = async (req: Request, res: Response) => {
   try {
-    const uid = req.body.uid;
+    const { uid } = req.body;
 
     if (!uid) {
       return res.status(400).json({ error: 'Missing user ID' });
     }
 
-    // Call the logoutUser service
-    await userService.logoutUser(uid);
+    // Send the entire req.body object to the logoutUser service
+    await userService.logoutUser(req.body);
 
     return res.status(200).json({ message: 'User logged out successfully' });
   } catch (error) {

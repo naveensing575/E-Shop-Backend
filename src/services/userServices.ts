@@ -4,16 +4,26 @@ import { firebaseAdmin } from '../config/firebaseAdmin';
 const prisma = new PrismaClient();
 
 class UserService {
-  async registerUser(
-    email: string,
-    password: string,
-    firstName: string,
-    lastName: string,
-    dateOfBirth: Date,
-    address: Record<string, any>,
-    phoneNumber: string
-  ) {
+  async registerUser(userData: {
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+    dateOfBirth: Date;
+    address: Record<string, any>;
+    phoneNumber: string;
+  }) {
     try {
+      const {
+        email,
+        password,
+        firstName,
+        lastName,
+        dateOfBirth,
+        address,
+        phoneNumber,
+      } = userData;
+
       // Check the generated types or use Prisma Client directly
       const user = await prisma.user.create({
         data: {
