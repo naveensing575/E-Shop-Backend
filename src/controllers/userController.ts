@@ -16,7 +16,6 @@ export default registerUser;
 
 const loginUserHandler = async (req: Request, res: Response) => {
   try {
-    await userService.validateUserToken(req.body);
 
     return res.status(200).json({
       message: 'User logged in successfully',

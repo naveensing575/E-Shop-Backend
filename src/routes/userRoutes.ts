@@ -7,11 +7,10 @@ const router = express.Router();
 // Define the registration route
 router.post("/register", registerUser);
 
-// Define the login route
-router.post("/login", loginUserHandler);
+// Define the login route, protected by the authentication middleware
+router.post("/login", authenticate, loginUserHandler);
 
-//Define the logout route
-router.post("/logout", logoutUserHandler);
-
+// Define the logout route, protected by the authentication middleware
+router.post("/logout", authenticate, logoutUserHandler);
 
 export default router;

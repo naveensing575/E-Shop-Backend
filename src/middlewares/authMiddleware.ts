@@ -1,8 +1,9 @@
-import { Request, Response, NextFunction } from "express";
-import {firebaseAdmin} from "../config/firebaseAdmin";
+import { Response, NextFunction } from "express";
+import CustomRequest from "../typings/types";
+import { firebaseAdmin } from "../config/firebaseAdmin";
 
 const authenticate = async (
-  req: Request,
+  req: CustomRequest,
   res: Response,
   next: NextFunction
 ) => {
@@ -18,7 +19,7 @@ const authenticate = async (
 
   try {
     const decodedToken = await firebaseAdmin.auth().verifyIdToken(token);
-    req.user = decodedToken; 
+    req.user = decodedToken;
     next();
   } catch (error) {
     console.error("Error verifying Firebase token:", error);

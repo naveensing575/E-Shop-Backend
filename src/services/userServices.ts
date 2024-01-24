@@ -75,15 +75,6 @@ class UserService {
   }
 
 
-  async validateUserToken(idToken: string): Promise<void> {
-    try {
-      await firebaseAdmin.auth().verifyIdToken(idToken);
-    } catch (error) {
-      console.error('Invalid ID token:', error);
-      throw new Error('Invalid ID token');
-    }
-  }
-
   async logoutUser(uid: string): Promise<void> {
     try {
       await firebaseAdmin.auth().revokeRefreshTokens(uid);

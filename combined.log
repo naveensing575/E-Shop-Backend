@@ -179,3 +179,16 @@
 {"level":"info","message":"GET /products","timestamp":"2024-01-24T07:19:07.968Z"}
 {"level":"info","message":"GET /products","timestamp":"2024-01-24T07:19:57.492Z"}
 {"level":"info","message":"GET /products","timestamp":"2024-01-24T07:23:49.635Z"}
+{"level":"info","message":"OPTIONS /login","timestamp":"2024-01-24T08:03:24.740Z"}
+{"level":"info","message":"POST /login","timestamp":"2024-01-24T08:03:24.753Z"}
+{"level":"info","message":"OPTIONS /login","timestamp":"2024-01-24T08:03:40.014Z"}
+{"level":"info","message":"POST /login","timestamp":"2024-01-24T08:03:40.019Z"}
+{"level":"info","message":"OPTIONS /login","timestamp":"2024-01-24T08:04:22.603Z"}
+{"level":"info","message":"POST /login","timestamp":"2024-01-24T08:04:22.611Z"}
+{"level":"info","message":"OPTIONS /login","timestamp":"2024-01-24T08:30:27.371Z"}
+{"level":"info","message":"POST /login","timestamp":"2024-01-24T08:30:27.374Z"}
+{"level":"info","message":"OPTIONS /login","timestamp":"2024-01-24T08:42:58.012Z"}
+{"level":"info","message":"POST /login","timestamp":"2024-01-24T08:42:58.026Z"}
+{"level":"info","message":"OPTIONS /login","timestamp":"2024-01-24T08:51:19.034Z"}
+{"level":"info","message":"POST /login","timestamp":"2024-01-24T08:51:19.044Z"}
+{"level":"info","message":"GET /login","timestamp":"2024-01-24T08:51:30.681Z"}
