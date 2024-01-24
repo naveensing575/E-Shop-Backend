@@ -1,24 +1,11 @@
 import { PrismaClient } from '@prisma/client';
 import { firebaseAdmin } from '../config/firebaseAdmin';
+import { UserData } from '../typings/userInterface';
 
 const prisma = new PrismaClient();
 
 class UserService {
-  async registerUser(userData: {
-    email: string;
-    password: string;
-    firstName: string;
-    lastName: string;
-    dateOfBirth: Date;
-    address: {
-      flat: string;
-      street: string;
-      city: string;
-      country: string;
-      zipcode: string;
-    };
-    phoneNumber: string;
-  }) {
+  async registerUser(userData: UserData) {
     try {
       const {
         email,
@@ -30,18 +17,13 @@ class UserService {
         phoneNumber,
       } = userData;
 
-
       const { flat, street, city, country, zipcode } = address;
 
-      console.log('User data:', {
+      const firebaseUser = await firebaseAdmin.auth().createUser({
         email,
         password,
-        firstName,
-        lastName,
-        dateOfBirth,
-        address,
-        phoneNumber,
       });
+
 
       const user = await prisma.user.create({
         data: {
@@ -57,15 +39,9 @@ class UserService {
             zipcode,
           },
           phoneNumber,
+          uid: firebaseUser.uid,
         },
       });
-
-      const firebaseUser = await firebaseAdmin.auth().createUser({
-        email,
-        password,
-      });
-
-      console.log('Successfully created Firebase user:', firebaseUser);
 
       return user;
     } catch (error) {
@@ -74,9 +50,23 @@ class UserService {
     }
   }
 
-
-  async logoutUser(uid: string): Promise<void> {
+  async logoutUser(userId: number): Promise<void> {
     try {
+      // Retrieve the user from the database based on the user ID
+      const user = await prisma.user.findUnique({
+        where: {
+          userId,
+        },
+      });
+
+      if (!user) {
+        throw new Error('User not found');
+      }
+
+      // Get the UID from the user data
+      const uid = user.uid;
+
+      // Revoke refresh tokens using Firebase Admin SDK
       await firebaseAdmin.auth().revokeRefreshTokens(uid);
     } catch (error) {
       console.error('Failed to log out user:', error);

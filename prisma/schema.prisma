@@ -7,10 +7,12 @@ datasource db {
 // Prisma Client generator
 generator client {
   provider = "prisma-client-js"
+  output   = "src/generated"
 }
 
 // User table for storing user information
 model User {
+  uid         String   @default("")
   userId      Int      @id @default(autoincrement())
   email       String   @unique
   firstName   String

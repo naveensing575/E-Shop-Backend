@@ -14,18 +14,6 @@ const registerUser = async (req: Request, res: Response) => {
 
 export default registerUser;
 
-const loginUserHandler = async (req: Request, res: Response) => {
-  try {
-
-    return res.status(200).json({
-      message: 'User logged in successfully',
-    });
-  } catch (error) {
-    console.error(error);
-
-    return res.status(401).json({ error: 'Invalid ID token' });
-  }
-};
 
 const logoutUserHandler = async (req: Request, res: Response) => {
   try {
@@ -45,4 +33,4 @@ const logoutUserHandler = async (req: Request, res: Response) => {
   }
 };
 
-export { registerUser, loginUserHandler, logoutUserHandler };
+export { registerUser, logoutUserHandler };
