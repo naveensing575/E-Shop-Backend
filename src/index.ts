@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
 import userRoutes from "./routes/userRoutes";
+import productRoutes from "./routes/productRoutes";
 import dotenv from "dotenv";
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -25,11 +26,12 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 });
 
 app.use(cors({
-  origin: 'http://localhost:3000', // Specify your frontend application's origin
-  credentials: true, // Allow credentials (cookies, etc.)
+  origin: 'http://localhost:3000', 
+  credentials: true, 
 }));
 app.use(bodyParser.json());
 app.use("/", userRoutes);
+app.use("/products", productRoutes);
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {

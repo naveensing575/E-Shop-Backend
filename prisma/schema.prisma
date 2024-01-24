@@ -27,11 +27,12 @@ model User {
 
 // Product table for storing information about products
 model Product {
-  productId   Int     @id @default(autoincrement())
+  productId   Int      @id @default(autoincrement())
   productName String
   categoryId  Int
   price       Float
-  active      Boolean @default(true)
+  active      Boolean  @default(true)
+  updatedAt   DateTime @updatedAt
 
   category         Category           @relation(fields: [categoryId], references: [categoryId])
   CartItem         CartItem[]

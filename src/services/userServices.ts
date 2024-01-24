@@ -10,7 +10,13 @@ class UserService {
     firstName: string;
     lastName: string;
     dateOfBirth: Date;
-    address: Record<string, any>;
+    address: {
+      flat: string;
+      street: string;
+      city: string;
+      country: string;
+      zipcode: string;
+    };
     phoneNumber: string;
   }) {
     try {
@@ -24,17 +30,35 @@ class UserService {
         phoneNumber,
       } = userData;
 
-      // Check the generated types or use Prisma Client directly
+
+      const { flat, street, city, country, zipcode } = address;
+
+      console.log('User data:', {
+        email,
+        password,
+        firstName,
+        lastName,
+        dateOfBirth,
+        address,
+        phoneNumber,
+      });
+
       const user = await prisma.user.create({
         data: {
           email,
           firstName,
           lastName,
           dateOfBirth,
-          address,
+          address: {
+            flat,
+            street,
+            city,
+            country,
+            zipcode,
+          },
           phoneNumber,
         },
-      } as any);
+      });
 
       const firebaseUser = await firebaseAdmin.auth().createUser({
         email,
@@ -45,16 +69,17 @@ class UserService {
 
       return user;
     } catch (error) {
-      console.error(error);
+      console.error('User registration failed:', error);
       throw new Error('User registration failed');
     }
   }
+
 
   async validateUserToken(idToken: string): Promise<void> {
     try {
       await firebaseAdmin.auth().verifyIdToken(idToken);
     } catch (error) {
-      console.error(error);
+      console.error('Invalid ID token:', error);
       throw new Error('Invalid ID token');
     }
   }
@@ -63,7 +88,7 @@ class UserService {
     try {
       await firebaseAdmin.auth().revokeRefreshTokens(uid);
     } catch (error) {
-      console.error(error);
+      console.error('Failed to log out user:', error);
       throw new Error('Failed to log out user');
     }
   }

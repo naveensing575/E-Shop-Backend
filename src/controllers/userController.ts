@@ -16,7 +16,6 @@ export default registerUser;
 
 const loginUserHandler = async (req: Request, res: Response) => {
   try {
-    // Send the entire req.body object to the validateUserToken service
     await userService.validateUserToken(req.body);
 
     return res.status(200).json({
