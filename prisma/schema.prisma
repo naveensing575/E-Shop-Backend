@@ -7,20 +7,18 @@ datasource db {
 // Prisma Client generator
 generator client {
   provider = "prisma-client-js"
-  output   = "src/generated"
 }
 
 // User table for storing user information
 model User {
-  uid         String   @default("")
-  userId      Int      @id @default(autoincrement())
-  email       String   @unique
+  uid         String
+  userId      Int     @id @default(autoincrement())
+  email       String  @unique
   firstName   String
   lastName    String
-  dateOfBirth DateTime @map("date") // Map to a database column of type DATE
   address     Json
   phoneNumber String
-  active      Boolean  @default(true)
+  active      Boolean @default(true)
 
   shoppingCart    ShoppingCart?
   PurchaseHistory PurchaseHistory[]
@@ -29,12 +27,13 @@ model User {
 
 // Product table for storing information about products
 model Product {
-  productId   Int      @id @default(autoincrement())
-  productName String
-  categoryId  Int
-  price       Float
-  active      Boolean  @default(true)
-  updatedAt   DateTime @updatedAt
+  productId          Int      @id @default(autoincrement())
+  productName        String
+  productDescription String
+  categoryId         Int
+  price              Float
+  active             Boolean  @default(true)
+  updatedAt          DateTime @updatedAt
 
   category         Category           @relation(fields: [categoryId], references: [categoryId])
   CartItem         CartItem[]

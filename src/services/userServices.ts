@@ -5,14 +5,13 @@ import { UserData } from '../typings/userInterface';
 const prisma = new PrismaClient();
 
 class UserService {
-  async registerUser(userData: UserData) {
+    async registerUser(userData: UserData) {
     try {
       const {
         email,
         password,
         firstName,
         lastName,
-        dateOfBirth,
         address,
         phoneNumber,
       } = userData;
@@ -24,13 +23,11 @@ class UserService {
         password,
       });
 
-
       const user = await prisma.user.create({
         data: {
           email,
           firstName,
           lastName,
-          dateOfBirth,
           address: {
             flat,
             street,
