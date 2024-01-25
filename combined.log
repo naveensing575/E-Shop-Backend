@@ -248,3 +248,7 @@
 {"level":"info","message":"POST /register","timestamp":"2024-01-25T07:35:54.159Z"}
 {"level":"info","message":"OPTIONS /register","timestamp":"2024-01-25T07:36:07.504Z"}
 {"level":"info","message":"POST /register","timestamp":"2024-01-25T07:36:07.507Z"}
+{"level":"info","message":"OPTIONS /register","timestamp":"2024-01-25T07:43:42.931Z"}
+{"level":"info","message":"POST /register","timestamp":"2024-01-25T07:43:42.938Z"}
+{"level":"info","message":"OPTIONS /register","timestamp":"2024-01-25T07:47:28.654Z"}
+{"level":"info","message":"POST /register","timestamp":"2024-01-25T07:47:28.659Z"}
