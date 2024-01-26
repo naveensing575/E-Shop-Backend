@@ -28,6 +28,7 @@ class UserService {
           email,
           firstName,
           lastName,
+
           address: {
             flat,
             street,

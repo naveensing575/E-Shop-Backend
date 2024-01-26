@@ -32,6 +32,10 @@ model Product {
   productDescription String
   categoryId         Int
   price              Float
+  image              String
+  quantity           Int
+  rating             Float
+  reviews            Json
   active             Boolean  @default(true)
   updatedAt          DateTime @updatedAt
 

@@ -29,14 +29,15 @@ const loginUserHandler = async (req: Request, res: Response) => {
 
 const logoutUserHandler = async (req: Request, res: Response) => {
   try {
-    const { uid } = req.body;
+    // Assuming you have a method to fetch uid based on user ID
+    const userId = req.body.uid;
 
-    if (!uid) {
+    if (!userId) {
       return res.status(400).json({ error: 'Missing user ID' });
     }
 
-    // Send the entire req.body object to the logoutUser service
-    await userService.logoutUser(req.body);
+    // Send the userId to the logoutUser service
+    await userService.logoutUser(userId);
 
     return res.status(200).json({ message: 'User logged out successfully' });
   } catch (error) {

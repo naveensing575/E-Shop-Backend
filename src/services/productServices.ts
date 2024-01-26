@@ -19,6 +19,17 @@ export class ProductService {
     }
   }
 
+  async getProductById( productId: number) {
+    try{
+      const product = await prisma.product.findUnique( {
+        where: { productId },
+      });
+      return product;
+
+    } catch (error: any) {
+      throw new Error(`Error retrieving product: ${error.message}`);
+    }
+  }
   async updateProduct(productId: number, productData: ProductRequest) {
     try {
       const updatedProduct = await prisma.product.update({
