@@ -30,6 +30,7 @@ model Product {
   productId          Int      @id @default(autoincrement())
   productName        String
   productDescription String
+  productDetails     String
   categoryId         Int
   price              Float
   image              String
@@ -37,7 +38,7 @@ model Product {
   rating             Float
   reviews            Json
   active             Boolean  @default(true)
-  updatedAt          DateTime @updatedAt
+  updatedAt          DateTime @default(now()) @updatedAt
 
   category         Category           @relation(fields: [categoryId], references: [categoryId])
   CartItem         CartItem[]

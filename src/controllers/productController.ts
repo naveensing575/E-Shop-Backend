@@ -12,19 +12,26 @@ class ProductController {
     }
   }
 
-  async getProductById(req: Request, res: Response) {
-    try {
-      const productId = parseInt(req.params.productId, 10);
-      const product = await ProductService.getProductById(productId);
-      if (!product) {
-        return res.status(404).json({ error: 'Product not found' });
-      }
-      return res.status(200).json(product);
-    } catch (error) {
-      console.error('Error retrieving product:', error);
-      return res.status(500).json({ error: 'Internal Server Error' });
-    }
+ async getProductById(req: Request, res: Response) {
+  const productId = parseInt(req.params.id, 10);
+
+  if (isNaN(productId) || productId <= 0) {
+    return res.status(400).json({ error: 'Invalid product ID' });
   }
+
+  try {
+    const product = await ProductService.getProductById(productId);
+
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    return res.status(200).json(product);
+  } catch (error) {
+    console.error('Error retrieving product by ID:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
 
   async updateProduct(req: Request, res: Response) {
     try {
