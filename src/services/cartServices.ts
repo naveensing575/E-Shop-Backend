@@ -3,28 +3,34 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export const cartService = {
-  getCart: async (userId: number) => {
-    try {
-      // Find the user's shopping cart
-      const shoppingCart = await prisma.shoppingCart.findUnique({
-        where: { userId: userId },
-      });
+ getCart: async (userId: number) => {
+  try {
+    const shoppingCart = await prisma.shoppingCart.findUnique({
+      where: { userId: userId },
+    });
 
-      if (!shoppingCart) {
-        throw new Error('Shopping cart not found');
-      }
-
-      const cartItems = await prisma.cartItem.findMany({
-        where: { shoppingCartId: shoppingCart.shoppingCartId },
-        include: { product: true },
-      });
-
-      return cartItems;
-    } catch (error) {
-      console.error('Error fetching cart:', error);
-      throw new Error('Failed to fetch cart items');
+    if (!shoppingCart) {
+      // Return an empty array if the shopping cart is not found
+      return { message: 'Your Shopping Bag is Empty!!', cartItems: [] };
     }
-  },
+
+    const cartItems = await prisma.cartItem.findMany({
+      where: { shoppingCartId: shoppingCart.shoppingCartId },
+      include: { product: true },
+    });
+
+    // Check if the cart is empty
+    if (cartItems.length === 0) {
+      return { message: 'Your Shopping Bag is Empty!!', cartItems: [] };
+    }
+
+    return { message: 'Shopping cart retrieved successfully', cartItems: cartItems };
+  } catch (error) {
+    console.error('Error fetching cart:', error);
+    throw new Error('Failed to fetch cart items');
+  }
+},
+
 
   //use upsert
 addToCart: async (userId: number, productId: number, quantity: number) => {
@@ -59,7 +65,6 @@ addToCart: async (userId: number, productId: number, quantity: number) => {
         });
       }
 
-      // Fetch the updated shopping cart with cart items
       const updatedCart = await prisma.shoppingCart.findUnique({
         where: { shoppingCartId: shoppingCart.shoppingCartId },
         include: { CartItem: true },
@@ -85,7 +90,7 @@ addToCart: async (userId: number, productId: number, quantity: number) => {
     }
 
     const updatedCartItem = await prisma.cartItem.update({
-      where: { cartItemId: cartItem.cartItemId }, // Use cartItemId as the unique identifier
+      where: { cartItemId: cartItem.cartItemId },
       data: { quantity },
     });
 

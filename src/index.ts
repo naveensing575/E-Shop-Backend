@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from "express";
 import userRoutes from "./routes/userRoutes";
 import productRoutes from "./routes/productRoutes";
 import cartRoutes from "./routes/cartRoutes";
+import orderRoutes from "./routes/orderRoute";
 import dotenv from "dotenv";
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -34,6 +35,8 @@ app.use(bodyParser.json());
 app.use("/", userRoutes);
 app.use("/products", productRoutes);
 app.use("/cart", cartRoutes);
+app.use("/order", orderRoutes);
+
 
 const port = process.env.PORT ?? 4000;
 app.listen(port, () => {

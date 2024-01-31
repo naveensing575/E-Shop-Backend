@@ -58,7 +58,7 @@ model Category {
 model Order {
   orderId   Int      @id @default(autoincrement())
   userId    Int
-  orderDate DateTime
+  orderDate DateTime @default(now())
   status    String
   active    Boolean  @default(true)
 
