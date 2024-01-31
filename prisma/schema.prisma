@@ -113,11 +113,12 @@ model PurchaseHistory {
 
 // PurchasedProduct table for storing individual products in the purchase history
 model PurchasedProduct {
-  purchasedProductId Int     @id @default(autoincrement())
+  purchasedProductId Int      @id @default(autoincrement())
   quantity           Int
   productId          Int
   purchaseHistoryId  Int
-  active             Boolean @default(true)
+  purchasedDate      DateTime @default(now())
+  active             Boolean  @default(true)
 
   product         Product         @relation(fields: [productId], references: [productId])
   purchaseHistory PurchaseHistory @relation(fields: [purchaseHistoryId], references: [purchaseHistoryId])

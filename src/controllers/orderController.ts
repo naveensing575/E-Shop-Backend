@@ -1,7 +1,7 @@
-import { Request, Response, NextFunction } from 'express';
-import { createOrder } from '../services/orderService';
+import { Request, Response } from 'express';
+import { createOrder, getPurchaseHistory } from '../services/orderService';
 
-async function handleCreateOrder(req: Request|any, res: Response, next: NextFunction) {
+async function handleCreateOrder(req: Request|any, res: Response) {
   try {
     const userId = req.extractedUser.userId;
     const { products }: { products: Array<{ productId: number; quantity: number; subtotal: number }> } = req.body;
@@ -14,4 +14,15 @@ async function handleCreateOrder(req: Request|any, res: Response, next: NextFunc
   }
 }
 
-export default  handleCreateOrder 
+async function handlePurchaseHistory(req: Request|any, res: Response) {
+  try {
+    const userId = req.extractedUser.userId;
+    const purchaseHistory = await getPurchaseHistory(userId);
+    return res.status(200).json(purchaseHistory);
+  } catch (error) {
+    console.error('Error fetching purchase history:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+export { handleCreateOrder, handlePurchaseHistory };

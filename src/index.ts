@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 app.use("/", userRoutes);
 app.use("/products", productRoutes);
 app.use("/cart", cartRoutes);
-app.use("/order", orderRoutes);
+app.use("/orders", orderRoutes);
 
 
 const port = process.env.PORT ?? 4000;

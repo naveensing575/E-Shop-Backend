@@ -4,9 +4,9 @@ const Prisma = new PrismaClient();
 
 export async function createOrder(userId: number, products: Array<{ productId: number; quantity: number; subtotal: number }>) {
   try {
-
     const status = 'completed';
 
+    // Create the order
     const order = await Prisma.order.create({
       data: {
         userId,
@@ -14,6 +14,7 @@ export async function createOrder(userId: number, products: Array<{ productId: n
       },
     });
 
+    // Create order details
     const orderDetails = await Promise.all(
       products.map(async (product) => {
         const { productId, quantity, subtotal } = product;
@@ -28,9 +29,33 @@ export async function createOrder(userId: number, products: Array<{ productId: n
       })
     );
 
+    // Create purchase history
+    const purchaseHistory = await Prisma.purchaseHistory.create({
+      data: {
+        userId,
+        active: true,
+      },
+    });
+
+    // Create purchased products
+    const purchasedProducts = await Promise.all(
+      products.map(async (product) => {
+        const { productId, quantity } = product;
+        return await Prisma.purchasedProduct.create({
+          data: {
+            productId,
+            purchaseHistoryId: purchaseHistory.purchaseHistoryId,
+            quantity,
+            active: true,
+          },
+        });
+      })
+    );
+
+    // Clear user's shopping cart
     const userShoppingCart = await Prisma.shoppingCart.findUnique({
       where: {
-        userId: userId,
+        userId,
       },
     });
 
@@ -46,13 +71,38 @@ export async function createOrder(userId: number, products: Array<{ productId: n
 
     await Prisma.shoppingCart.delete({
       where: {
-        userId: userId,
+        userId,
       },
     });
 
-    return { order, orderDetails };
+    return { order, orderDetails, purchaseHistory, purchasedProducts };
   } catch (error) {
     console.error('Error creating order:', error);
     throw new Error('Internal Server Error');
   }
 }
+
+export async function getPurchaseHistory(userId: number) {
+  try {
+    const purchaseHistory = await Prisma.purchaseHistory.findMany({
+      where: {
+        userId: userId,
+        active: true,
+      },
+      include: {
+        purchasedProducts: {
+          include: {
+            product: true,
+          },
+        },
+      },
+    });
+
+    return purchaseHistory;
+  } catch (error) {
+    console.error('Error fetching purchase history:', error);
+    throw new Error('Internal Server Error');
+  }
+}
+
+export default { createOrder, getPurchaseHistory };
