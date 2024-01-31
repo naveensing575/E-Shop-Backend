@@ -30,6 +30,15 @@ export class ProductService {
       throw new Error(`Error retrieving product: ${error.message}`);
     }
   }
+
+  async getAllCategories() {
+    try {
+      const categories = await prisma.category.findMany();
+      return categories;
+    } catch (error: any) {
+      throw new Error(`Error retrieving categories: ${error.message}`);
+    }
+  }
   async updateProduct(productId: number, productData: ProductRequest) {
     try {
       const updatedProduct = await prisma.product.update({

@@ -11,7 +11,7 @@ generator client {
 
 // User table for storing user information
 model User {
-  uid         String
+  uid         String  @unique
   userId      Int     @id @default(autoincrement())
   email       String  @unique
   firstName   String

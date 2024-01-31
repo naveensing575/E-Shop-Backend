@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import ProductService from '../services/productServices';
+import productServices from '../services/productServices';
 
 class ProductController {
   async getAllProducts(req: Request, res: Response) {
@@ -32,6 +33,16 @@ class ProductController {
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 }
+
+async getAllCategories(req: Request, res: Response) {
+    try {
+      const categories = await productServices.getAllCategories();
+      return res.status(200).json(categories);
+    } catch (error) {
+      console.error('Error retrieving categories:', error);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+  }
 
   async updateProduct(req: Request, res: Response) {
     try {

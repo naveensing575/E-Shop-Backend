@@ -1,6 +1,7 @@
 import express, { Request, Response, NextFunction } from "express";
 import userRoutes from "./routes/userRoutes";
 import productRoutes from "./routes/productRoutes";
+import cartRoutes from "./routes/cartRoutes";
 import dotenv from "dotenv";
 import cors from "cors";
 import bodyParser from "body-parser";
@@ -19,7 +20,7 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   logger.error(err.stack);
 
   if (process.env.NODE_ENV === 'development') {
-    res.status(500).send(err.stack || 'Something went wrong!');
+    res.status(500).send(err.stack ?? 'Something went wrong!');
   } else {
     res.status(500).send('Something went wrong!');
   }
@@ -32,8 +33,9 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use("/", userRoutes);
 app.use("/products", productRoutes);
+app.use("/cart", cartRoutes);
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT ?? 4000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
