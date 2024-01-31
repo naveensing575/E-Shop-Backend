@@ -26,6 +26,7 @@ export const cartService = {
     }
   },
 
+  //use upsert
 addToCart: async (userId: number, productId: number, quantity: number) => {
     try {
       // Find the user's shopping cart
@@ -72,25 +73,45 @@ addToCart: async (userId: number, productId: number, quantity: number) => {
   },
 
 
-  updateCartItem: async (cartItemId: number, quantity: number) => {
-    try {
-      const updatedCartItem = await prisma.cartItem.update({
-        where: { cartItemId },
-        data: { quantity },
-      });
-      return updatedCartItem;
-    } catch (error) {
-      console.error('Error updating cart item:', error);
-      throw new Error('Failed to update cart item');
-    }
-  },
+  updateCartItem: async (productId: number, quantity: number) => {
+  try {
+    // Find the cart item based on productId
+    const cartItem = await prisma.cartItem.findFirst({
+      where: { productId },
+    });
 
-  removeFromCart: async (cartItemId: number) => {
-    try {
-      await prisma.cartItem.delete({ where: { cartItemId } });
-    } catch (error) {
-      console.error('Error removing from cart:', error);
-      throw new Error('Failed to remove item from cart');
+    if (!cartItem) {
+      throw new Error('Cart item not found');
     }
-  },
+
+    const updatedCartItem = await prisma.cartItem.update({
+      where: { cartItemId: cartItem.cartItemId }, // Use cartItemId as the unique identifier
+      data: { quantity },
+    });
+
+    return updatedCartItem;
+  } catch (error) {
+    console.error('Error updating cart item:', error);
+    throw new Error('Failed to update cart item');
+  }
+},
+
+removeFromCart: async (productId: number) => {
+  try {
+    // Find the cart item based on productId
+    const cartItem = await prisma.cartItem.findFirst({
+      where: { productId },
+    });
+
+    if (!cartItem) {
+      throw new Error('Cart item not found');
+    }
+
+    await prisma.cartItem.delete({ where: { cartItemId: cartItem.cartItemId } }); // Use cartItemId as the unique identifier
+  } catch (error) {
+    console.error('Error removing from cart:', error);
+    throw new Error('Failed to remove item from cart');
+  }
+},
+
 };

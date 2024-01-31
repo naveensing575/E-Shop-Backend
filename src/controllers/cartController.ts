@@ -25,11 +25,10 @@ export const cartController = {
     }
   },
 
-  updateCartItem: async (req: Request, res: Response) => {
-    const cartItemId = Number(req.params.cartItemId);
-    const { quantity } = req.body;
+ updateCartItem: async (req: Request, res: Response) => {
+    const { quantity, productId } = req.body;
     try {
-      const updatedCartItem = await cartService.updateCartItem(cartItemId, quantity);
+      const updatedCartItem = await cartService.updateCartItem(productId, quantity);
       res.json(updatedCartItem);
     } catch (error) {
       console.error('Error updating cart item:', error);
@@ -38,13 +37,14 @@ export const cartController = {
   },
 
   removeFromCart: async (req: Request, res: Response) => {
-    const cartItemId = Number(req.params.cartItemId);
+    const { productId } = req.body;
     try {
-      await cartService.removeFromCart(cartItemId);
+      await cartService.removeFromCart(productId);
       res.sendStatus(204);
     } catch (error) {
       console.error('Error removing from cart:', error);
       res.status(500).json({ error: 'Failed to remove item from cart' });
     }
   },
+
 };
