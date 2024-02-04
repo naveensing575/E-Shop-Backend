@@ -55,9 +55,6 @@ export async function createOrder(userId: number, products: Array<{ productId: n
       })
     );
 
-    // Send order confirmation email
-    await sendOrderConfirmationEmail(userId);
-
     // Clear user's shopping cart
     const userShoppingCart = await Prisma.shoppingCart.findUnique({
       where: {
@@ -88,7 +85,7 @@ export async function createOrder(userId: number, products: Array<{ productId: n
   }
 }
 
-async function sendOrderConfirmationEmail(userId: number) {
+export async function sendOrderConfirmationEmail(userId: number) {
   try {
     const user = await Prisma.user.findUnique({
       where: {

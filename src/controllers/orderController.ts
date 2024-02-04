@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { createOrder, getPurchaseHistory } from '../services/orderService';
+import { createOrder, getPurchaseHistory, sendOrderConfirmationEmail } from '../services/orderService';
 
 async function handleCreateOrder(req: Request | any, res: Response) {
   try {
@@ -7,6 +7,7 @@ async function handleCreateOrder(req: Request | any, res: Response) {
     const { products }: { products: Array<{ productId: number; quantity: number; subtotal: number }> } = req.body;
 
     const result = await createOrder(userId, products);
+    await sendOrderConfirmationEmail(userId);
     return res.status(201).json(result);
   } catch (error) {
     console.error('Error in creating order:', error);
