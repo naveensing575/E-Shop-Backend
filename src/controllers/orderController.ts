@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { createOrder, getPurchaseHistory, sendOrderConfirmationEmail } from '../services/orderService';
+import { createOrder, getPurchaseHistory, sendOrderConfirmationEmail, getOrderDetailById } from '../services/orderService';
 
 async function handleCreateOrder(req: Request | any, res: Response) {
   try {
@@ -15,6 +15,21 @@ async function handleCreateOrder(req: Request | any, res: Response) {
   }
 }
 
+async function handleGetOrderById(req: Request | any, res: Response) {
+  try {
+    const orderId = parseInt(req.params.orderId, 10);
+    const { userId } = req.extractedUser;
+    const orderDetail = await getOrderDetailById(userId, orderId);
+    if (!orderDetail) {
+      return res.status(404).json({ error: 'Order not found' });
+    }
+    return res.status(200).json(orderDetail);
+  } catch (error) {
+    console.error('Error fetching order detail:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
 async function handlePurchaseHistory(req: Request | any, res: Response) {
   try {
     const userId = req.extractedUser.userId;
@@ -26,4 +41,4 @@ async function handlePurchaseHistory(req: Request | any, res: Response) {
   }
 }
 
-export { handleCreateOrder, handlePurchaseHistory };
+export { handleCreateOrder, handlePurchaseHistory, handleGetOrderById };

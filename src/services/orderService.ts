@@ -162,6 +162,29 @@ export async function sendOrderConfirmationEmail(userId: number) {
   }
 }
 
+export async function getOrderDetailById(userId: number, orderId: number) {
+  try {
+    const orderDetail = await Prisma.purchaseHistory.findUnique({
+      where: {
+        purchaseHistoryId: orderId,
+        userId: userId,
+      },
+      include: {
+        purchasedProducts: {
+          include: {
+            product: true,
+          },
+        },
+      },
+    });
+
+    return orderDetail;
+  } catch (error) {
+    console.error('Error fetching order detail:', error);
+    throw new Error('Internal Server Error');
+  }
+}
+
 export async function getPurchaseHistory(userId: number) {
   try {
     const purchaseHistory = await Prisma.purchaseHistory.findMany({
