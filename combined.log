@@ -9180,3 +9180,7 @@
 {"level":"info","message":"GET /products?page=2&limit=8","timestamp":"2024-02-08T04:33:16.770Z"}
 {"level":"info","message":"OPTIONS /products?page=1&limit=8","timestamp":"2024-02-08T04:33:20.617Z"}
 {"level":"info","message":"GET /products?page=1&limit=8","timestamp":"2024-02-08T04:33:20.626Z"}
+{"level":"info","message":"OPTIONS /products?page=1&limit=8","timestamp":"2024-02-08T05:20:33.609Z"}
+{"level":"info","message":"OPTIONS /products?page=1&limit=8","timestamp":"2024-02-08T05:20:33.626Z"}
+{"level":"info","message":"GET /products?page=1&limit=8","timestamp":"2024-02-08T05:20:33.632Z"}
+{"level":"info","message":"GET /products?page=1&limit=8","timestamp":"2024-02-08T05:20:34.812Z"}
