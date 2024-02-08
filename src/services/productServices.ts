@@ -10,14 +10,22 @@ interface ProductRequest {
 const prisma = new PrismaClient();
 
 export class ProductService {
-  async getAllProducts() {
+  async getAllProducts(page: number, limit: number) {
     try {
-      const products = await prisma.product.findMany();
-      return products;
+      const skip = (page - 1) * limit;
+      const products = await prisma.product.findMany({
+        skip,
+        take: limit,
+      });
+      const totalCount = await prisma.product.count(); // Total number of products
+      const totalPages = Math.ceil(totalCount / limit); // Total number of pages
+      return { products, totalCount, totalPages };
     } catch (error: any) {
       throw new Error(`Error retrieving products: ${error.message}`);
     }
   }
+
+
 
   async getProductById( productId: number) {
     try{

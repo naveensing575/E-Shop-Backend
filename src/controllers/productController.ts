@@ -3,15 +3,17 @@ import ProductService from '../services/productServices';
 import productServices from '../services/productServices';
 
 class ProductController {
-  async getAllProducts(req: Request, res: Response) {
+   async getAllProducts(req: Request, res: Response) {
     try {
-      const products = await ProductService.getAllProducts();
+      const { page = 1, limit = 8 } = req.query; 
+      const products = await ProductService.getAllProducts(Number(page), Number(limit));
       return res.status(200).json(products);
     } catch (error) {
       console.error('Error retrieving products:', error);
       return res.status(500).json({ error: 'Internal Server Error' });
     }
   }
+
 
  async getProductById(req: Request, res: Response) {
   const productId = parseInt(req.params.id, 10);

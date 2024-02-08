@@ -9167,3 +9167,16 @@
 {"level":"info","message":"OPTIONS /orders/history","timestamp":"2024-02-07T05:17:36.365Z"}
 {"level":"info","message":"GET /orders/history","timestamp":"2024-02-07T05:17:36.383Z"}
 {"level":"info","message":"GET /orders/history","timestamp":"2024-02-07T05:17:36.409Z"}
+{"level":"info","message":"OPTIONS /products?page=1&limit=8","timestamp":"2024-02-08T04:25:17.590Z"}
+{"level":"info","message":"OPTIONS /products?page=1&limit=8","timestamp":"2024-02-08T04:25:17.616Z"}
+{"level":"info","message":"GET /products?page=1&limit=8","timestamp":"2024-02-08T04:25:17.620Z"}
+{"level":"info","message":"GET /products?page=1&limit=8","timestamp":"2024-02-08T04:25:18.811Z"}
+{"level":"info","message":"OPTIONS /products?page=2&limit=8","timestamp":"2024-02-08T04:25:20.634Z"}
+{"level":"info","message":"GET /products?page=2&limit=8","timestamp":"2024-02-08T04:25:20.646Z"}
+{"level":"info","message":"OPTIONS /products?page=3&limit=8","timestamp":"2024-02-08T04:25:21.132Z"}
+{"level":"info","message":"GET /products?page=3&limit=8","timestamp":"2024-02-08T04:25:21.139Z"}
+{"level":"info","message":"GET /products?page=1&limit=8","timestamp":"2024-02-08T04:25:21.983Z"}
+{"level":"info","message":"OPTIONS /products?page=2&limit=8","timestamp":"2024-02-08T04:33:16.728Z"}
+{"level":"info","message":"GET /products?page=2&limit=8","timestamp":"2024-02-08T04:33:16.770Z"}
+{"level":"info","message":"OPTIONS /products?page=1&limit=8","timestamp":"2024-02-08T04:33:20.617Z"}
+{"level":"info","message":"GET /products?page=1&limit=8","timestamp":"2024-02-08T04:33:20.626Z"}
