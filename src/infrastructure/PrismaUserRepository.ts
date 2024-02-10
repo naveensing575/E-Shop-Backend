@@ -1,11 +1,13 @@
 import { PrismaClient } from '@prisma/client';
+import { UserRepository } from '../domain/UserRepository';
+import { User } from '../domain/entities/User';
 import { firebaseAdmin } from '../config/firebaseAdmin';
 import { UserData } from '../typings/userInterface';
 
 const prisma = new PrismaClient();
 
-class UserService {
-    async registerUser(userData: UserData) {
+class PrismaUserRepository implements UserRepository {
+  async registerUser(userData: UserData): Promise<User> {
     try {
       const {
         email,
@@ -28,13 +30,14 @@ class UserService {
           email,
           firstName,
           lastName,
-
           address: {
-            flat,
-            street,
-            city,
-            country,
-            zipcode,
+            create: {
+              flat,
+              street,
+              city,
+              country,
+              zipcode,
+            },
           },
           phoneNumber,
           uid: firebaseUser.uid,
@@ -73,4 +76,4 @@ class UserService {
   }
 }
 
-export default new UserService();
+export default new PrismaUserRepository();

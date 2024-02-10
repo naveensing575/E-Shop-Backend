@@ -1,11 +1,13 @@
 import { PrismaClient } from '@prisma/client';
+import { OrderRepository } from '../domain/OrderRepository';
 import nodemailer from 'nodemailer';
 import dotenv from "dotenv";
 
 dotenv.config();
 const Prisma = new PrismaClient();
 
-export async function createOrder(userId: number, products: Array<{ productId: number; quantity: number; subtotal: number }>) {
+export class PrismaOrderRepository implements OrderRepository {
+ async createOrder(userId: number, products: Array<{ productId: number; quantity: number; subtotal: number }>) {
   try {
     const status = 'completed';
 
@@ -85,7 +87,7 @@ export async function createOrder(userId: number, products: Array<{ productId: n
   }
 }
 
-export async function sendOrderConfirmationEmail(userId: number) {
+  async sendOrderConfirmationEmail(userId: number) {
   try {
     const user = await Prisma.user.findUnique({
       where: {
@@ -108,7 +110,7 @@ export async function sendOrderConfirmationEmail(userId: number) {
     });
 
     // Fetch purchase history for the user
-    const purchaseHistory = await getPurchaseHistory(userId);
+    const purchaseHistory = await this.getPurchaseHistory(userId);
 
     // Check if there is any purchase history
     if (purchaseHistory.length === 0) {
@@ -130,7 +132,7 @@ export async function sendOrderConfirmationEmail(userId: number) {
           <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Subtotal</th>
           <th style="border: 1px solid #dddddd; text-align: left; padding: 8px;">Image</th>
         </tr>
-        ${purchasedProducts.map(product => `
+        ${purchasedProducts.map((product: { product: { productName: any; price: number; image: any; }; quantity: number; }) => `
           <tr>
             <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">${product.product.productName}</td>
             <td style="border: 1px solid #dddddd; text-align: left; padding: 8px;">${product.quantity}</td>
@@ -162,7 +164,7 @@ export async function sendOrderConfirmationEmail(userId: number) {
   }
 }
 
-export async function getOrderDetailById(userId: number, orderId: number) {
+async getOrderDetailById(userId: number, orderId: number): Promise<any> {
   try {
     const orderDetail = await Prisma.purchaseHistory.findUnique({
       where: {
@@ -185,7 +187,7 @@ export async function getOrderDetailById(userId: number, orderId: number) {
   }
 }
 
-export async function getPurchaseHistory(userId: number) {
+  async getPurchaseHistory(userId: number): Promise<any> {
   try {
     const purchaseHistory = await Prisma.purchaseHistory.findMany({
       where: {
@@ -207,3 +209,6 @@ export async function getPurchaseHistory(userId: number) {
     throw new Error('Internal Server Error');
   }
 }
+};
+
+export default new PrismaOrderRepository();

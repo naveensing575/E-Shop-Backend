@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
-import { cartService } from '../services/cartServices';
+import CartService from '../../application/cartServices';
 
 export const cartController = {
-  getCart: async (req: Request|any, res: Response) => {
+  getCart: async (req: Request | any, res: Response) => {
     const userId = req.extractedUser.userId;
     try {
-      const cartItems = await cartService.getCart(userId);
+      const cartItems = await CartService.getCart(userId);
       res.json(cartItems);
     } catch (error) {
       console.error('Error getting cart:', error);
@@ -13,11 +13,11 @@ export const cartController = {
     }
   },
 
-  addToCart: async (req: Request|any, res: Response) => {
-    const userId =  req.extractedUser.userId;
+  addToCart: async (req: Request | any, res: Response) => {
+    const userId = req.extractedUser.userId;
     const { productId, quantity } = req.body;
     try {
-      const cartItem = await cartService.addToCart(userId, productId, quantity);
+      const cartItem = await CartService.addToCart(userId, productId, quantity);
       res.json(cartItem);
     } catch (error) {
       console.error('Error adding to cart:', error);
@@ -25,10 +25,10 @@ export const cartController = {
     }
   },
 
- updateCartItem: async (req: Request, res: Response) => {
+  updateCartItem: async (req: Request, res: Response) => {
     const { quantity, productId } = req.body;
     try {
-      const updatedCartItem = await cartService.updateCartItem(productId, quantity);
+      const updatedCartItem = await CartService.updateCartItem(productId, quantity);
       res.json(updatedCartItem);
     } catch (error) {
       console.error('Error updating cart item:', error);
@@ -39,12 +39,11 @@ export const cartController = {
   removeFromCart: async (req: Request, res: Response) => {
     const { productId } = req.body;
     try {
-      await cartService.removeFromCart(productId);
+      await CartService.removeFromCart(productId);
       res.sendStatus(204);
     } catch (error) {
       console.error('Error removing from cart:', error);
       res.status(500).json({ error: 'Failed to remove item from cart' });
     }
   },
-
 };

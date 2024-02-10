@@ -1,9 +1,8 @@
 import { Request, Response } from 'express';
-import ProductService from '../services/productServices';
-import productServices from '../services/productServices';
+import ProductService from '../../application/productServices';
 
 class ProductController {
-   async getAllProducts(req: Request, res: Response) {
+  async getAllProducts(req: Request, res: Response) {
     try {
       const { page = 1, limit = 8 } = req.query; 
       const products = await ProductService.getAllProducts(Number(page), Number(limit));
@@ -14,31 +13,30 @@ class ProductController {
     }
   }
 
+  async getProductById(req: Request, res: Response) {
+    const productId = parseInt(req.params.id, 10);
 
- async getProductById(req: Request, res: Response) {
-  const productId = parseInt(req.params.id, 10);
-
-  if (isNaN(productId) || productId <= 0) {
-    return res.status(400).json({ error: 'Invalid product ID' });
-  }
-
-  try {
-    const product = await ProductService.getProductById(productId);
-
-    if (!product) {
-      return res.status(404).json({ error: 'Product not found' });
+    if (isNaN(productId) || productId <= 0) {
+      return res.status(400).json({ error: 'Invalid product ID' });
     }
 
-    return res.status(200).json(product);
-  } catch (error) {
-    console.error('Error retrieving product by ID:', error);
-    return res.status(500).json({ error: 'Internal Server Error' });
-  }
-}
-
-async getAllCategories(req: Request, res: Response) {
     try {
-      const categories = await productServices.getAllCategories();
+      const product = await ProductService.getProductById(productId);
+
+      if (!product) {
+        return res.status(404).json({ error: 'Product not found' });
+      }
+
+      return res.status(200).json(product);
+    } catch (error) {
+      console.error('Error retrieving product by ID:', error);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+  }
+
+  async getAllCategories(req: Request, res: Response) {
+    try {
+      const categories = await ProductService.getAllCategories();
       return res.status(200).json(categories);
     } catch (error) {
       console.error('Error retrieving categories:', error);

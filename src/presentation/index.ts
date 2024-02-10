@@ -1,13 +1,13 @@
 import express, { Request, Response, NextFunction } from "express";
-import userRoutes from "./routes/userRoutes";
-import productRoutes from "./routes/productRoutes";
-import cartRoutes from "./routes/cartRoutes";
-import orderRoutes from "./routes/orderRoute";
+import userRoutes from "../routes/userRoutes";
+import productRoutes from "../routes/productRoutes";
+import cartRoutes from "../routes/cartRoutes";
+import orderRoutes from "../routes/orderRoute";
 import dotenv from "dotenv";
 import cors from "cors";
 import bodyParser from "body-parser";
-import logger from "./utils/logger";
-import ErrorHandlerMiddleware from "./middlewares/errorMiddleware";
+import logger from "../utils/logger";
+import ErrorHandlerMiddleware from "../middlewares/errorMiddleware";
 
 dotenv.config();
 

@@ -1,15 +1,10 @@
 import { PrismaClient } from '@prisma/client';
-
-interface ProductRequest {
-  productName?: string;
-  categoryId?: number;
-  price?: number;
-  active?: boolean;
-}
+import { ProductRepository } from '../domain/ProductRepository';
+import { Product } from '../domain/entities/Product';
 
 const prisma = new PrismaClient();
 
-export class ProductService {
+export class PrismaProductRepository implements ProductRepository {
   async getAllProducts(page: number, limit: number) {
     try {
       const skip = (page - 1) * limit;
@@ -17,23 +12,20 @@ export class ProductService {
         skip,
         take: limit,
       });
-      const totalCount = await prisma.product.count(); // Total number of products
-      const totalPages = Math.ceil(totalCount / limit); // Total number of pages
+      const totalCount = await prisma.product.count();
+      const totalPages = Math.ceil(totalCount / limit);
       return { products, totalCount, totalPages };
     } catch (error: any) {
       throw new Error(`Error retrieving products: ${error.message}`);
     }
   }
 
-
-
-  async getProductById( productId: number) {
-    try{
-      const product = await prisma.product.findUnique( {
+  async getProductById(productId: number) {
+    try {
+      const product = await prisma.product.findUnique({
         where: { productId },
       });
       return product;
-
     } catch (error: any) {
       throw new Error(`Error retrieving product: ${error.message}`);
     }
@@ -42,12 +34,13 @@ export class ProductService {
   async getAllCategories() {
     try {
       const categories = await prisma.category.findMany();
-      return categories;
+      return categories.map(category => category.categoryName);
     } catch (error: any) {
       throw new Error(`Error retrieving categories: ${error.message}`);
     }
   }
-  async updateProduct(productId: number, productData: ProductRequest) {
+
+  async updateProduct(productId: number, productData: Partial<Product>) {
     try {
       const updatedProduct = await prisma.product.update({
         where: { productId },
@@ -61,14 +54,14 @@ export class ProductService {
 
   async deleteProduct(productId: number) {
     try {
-      const deletedProduct = await prisma.product.delete({
+      await prisma.product.delete({
         where: { productId },
       });
-      return deletedProduct;
+      return true;
     } catch (error: any) {
       throw new Error(`Error deleting product: ${error.message}`);
     }
   }
 }
 
-export default new ProductService();
+export default new PrismaProductRepository();
