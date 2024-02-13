@@ -1,6 +1,6 @@
 import { UserRepository } from '../domain/UserRepository';
 import { User } from '../domain/entities/User';
-import { UserData } from '../typings/userInterface';
+import { UserData } from '../presentation/typings/userInterface';
 import userRepository from '../infrastructure/PrismaUserRepository';
 
 class UserService {

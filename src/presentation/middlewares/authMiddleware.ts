@@ -1,6 +1,6 @@
 import { Response, NextFunction } from "express";
 import CustomRequest from "../typings/types";
-import { firebaseAdmin } from "../config/firebaseAdmin";
+import { firebaseAdmin } from "../../config/firebaseAdmin";
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();

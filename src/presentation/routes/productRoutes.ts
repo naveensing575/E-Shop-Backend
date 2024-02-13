@@ -1,5 +1,5 @@
 import express from 'express';
-import ProductController from '../presentation/controllers/productController';
+import ProductController from '../controllers/productController';
 import authenticate from '../middlewares/authMiddleware';
 
 const router = express.Router();

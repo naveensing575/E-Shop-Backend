@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import { UserRepository } from '../domain/UserRepository';
 import { User } from '../domain/entities/User';
 import { firebaseAdmin } from '../config/firebaseAdmin';
-import { UserData } from '../typings/userInterface';
+import { UserData } from '../presentation/typings/userInterface';
 
 const prisma = new PrismaClient();
 
