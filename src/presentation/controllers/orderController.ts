@@ -1,23 +1,37 @@
-import  OrderService  from '../../application/orderService';
-import { Request, Response } from 'express';
+import { Response, NextFunction } from 'express';
+import OrderService from '../../application/orderService';
+import CustomRequest from '../typings/types';
 
-async function handleCreateOrder(req: Request | any, res: Response) {
+async function handleCreateOrder(req: CustomRequest, res: Response, next: NextFunction) {
+  const { extractedUser } = req;
+
+  if (!extractedUser) {
+    throw new Error('User not authenticated');
+  }
+
   try {
-    const { userId } = req.extractedUser;
-    const { products }: { products: Array<{ productId: number; quantity: number; subtotal: number }> } = req.body;
+    const { userId } = extractedUser;
+    const { products } = req.body;
 
     const result = await OrderService.createOrder(userId, products);
     await OrderService.sendOrderConfirmationEmail(userId);
     return res.status(201).json(result);
   } catch (error) {
     console.error('Error in creating order:', error);
-    return res.status(500).json({ error: 'Internal Server Error' });
+    next(error);
   }
 }
-async function handleGetOrderById(req: Request | any, res: Response) {
+
+async function handleGetOrderById(req: CustomRequest, res: Response, next: NextFunction) {
+  const { extractedUser } = req;
+
+  if (!extractedUser) {
+    throw new Error('User not authenticated');
+  }
+
   try {
+    const { userId } = extractedUser;
     const orderId = parseInt(req.params.orderId, 10);
-    const { userId } = req.extractedUser;
     const orderDetail = await OrderService.getOrderDetailById(userId, orderId);
     if (!orderDetail) {
       return res.status(404).json({ error: 'Order not found' });
@@ -25,18 +39,24 @@ async function handleGetOrderById(req: Request | any, res: Response) {
     return res.status(200).json(orderDetail);
   } catch (error) {
     console.error('Error fetching order detail:', error);
-    return res.status(500).json({ error: 'Internal Server Error' });
+    next(error);
   }
 }
 
-async function handlePurchaseHistory(req: Request | any, res: Response) {
+async function handlePurchaseHistory(req: CustomRequest, res: Response, next: NextFunction) {
+  const { extractedUser } = req;
+
+  if (!extractedUser) {
+    throw new Error('User not authenticated');
+  }
+
   try {
-    const userId = req.extractedUser.userId;
+    const { userId } = extractedUser;
     const purchaseHistory = await OrderService.getPurchaseHistory(userId);
     return res.status(200).json(purchaseHistory);
   } catch (error) {
     console.error('Error fetching purchase history:', error);
-    return res.status(500).json({ error: 'Internal Server Error' });
+    next(error);
   }
 }
 

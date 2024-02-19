@@ -1,9 +1,14 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import CartService from '../../application/cartServices';
+import CustomRequest from '../typings/types';
 
 export const cartController = {
-  getCart: async (req: Request | any, res: Response) => {
-    const userId = req.extractedUser.userId;
+  getCart: async (req: CustomRequest, res: Response, next: NextFunction) => {
+    const { extractedUser } = req;
+    if (!extractedUser) {
+    throw new Error('User not authenticated');
+    }
+    const userId = extractedUser.userId;
     try {
       const cartItems = await CartService.getCart(userId);
       res.json(cartItems);
@@ -13,8 +18,12 @@ export const cartController = {
     }
   },
 
-  addToCart: async (req: Request | any, res: Response) => {
-    const userId = req.extractedUser.userId;
+  addToCart: async (req: CustomRequest, res: Response, next: NextFunction) => {
+    const { extractedUser } = req;
+    if (!extractedUser) {
+      throw new Error('User not authenticated');
+    }
+    const userId = extractedUser.userId;
     const { productId, quantity } = req.body;
     try {
       const cartItem = await CartService.addToCart(userId, productId, quantity);
