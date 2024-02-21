@@ -1,4 +1,3 @@
-import { Request, Response, NextFunction } from 'express';
 import { cartController } from '../../../presentation/controllers/cartController';
 import CartService from '../../../application/cartServices';
 
@@ -38,7 +37,7 @@ describe('cartController', () => {
       await cartController.getCart(req, res, next);
 
       expect(mockedCartService.getCart).toHaveBeenCalledWith('mockUserId');
-      expect(res.json).toHaveBeenCalledWith({ cartItems });
+      expect(res.json).toHaveBeenCalledWith({ message: 'Cart items retrieved successfully', cartItems });
     });
 
     it('should handle errors', async () => {
@@ -62,7 +61,7 @@ describe('cartController', () => {
       await cartController.addToCart(req, res, next);
 
       expect(mockedCartService.addToCart).toHaveBeenCalledWith('mockUserId', 1, 2);
-      expect(res.json).toHaveBeenCalledWith({ cartItem });
+      expect(res.json).toHaveBeenCalledWith({ message: 'Item added to cart successfully', cartItem });
     });
 
     it('should handle errors', async () => {

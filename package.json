@@ -5,7 +5,8 @@
   "main": "src/presentation/index.ts",
   "scripts": {
     "start": "nodemon src/presentation/index.ts",
-    "test": "jest --forceExit --config --detectOpenHandles"
+    "test": "jest --forceExit --config --detectOpenHandles",
+    "test-coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "",

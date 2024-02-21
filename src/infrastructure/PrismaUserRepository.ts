@@ -50,30 +50,6 @@ class PrismaUserRepository implements UserRepository {
       throw new Error('User registration failed');
     }
   }
-
-  async logoutUser(userId: number): Promise<void> {
-    try {
-      // Retrieve the user from the database based on the user ID
-      const user = await prisma.user.findUnique({
-        where: {
-          userId,
-        },
-      });
-
-      if (!user) {
-        throw new Error('User not found');
-      }
-
-      // Get the UID from the user data
-      const uid = user.uid;
-
-      // Revoke refresh tokens using Firebase Admin SDK
-      await firebaseAdmin.auth().revokeRefreshTokens(uid);
-    } catch (error) {
-      console.error('Failed to log out user:', error);
-      throw new Error('Failed to log out user');
-    }
-  }
 }
 
 export default new PrismaUserRepository();

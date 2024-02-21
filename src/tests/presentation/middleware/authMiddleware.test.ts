@@ -7,12 +7,15 @@ import authenticateMiddleware from '../../../presentation/middlewares/authMiddle
 // Mock PrismaClient
 jest.mock('@prisma/client', () => {
   const mockedPrismaClient = {
-    user: { findUnique: jest.fn() }, // Mocking the user property
+    user: {
+      findUnique: jest.fn(),
+    },
   };
   return {
     PrismaClient: jest.fn(() => mockedPrismaClient),
   };
 });
+
 
 // Mock firebaseAdmin.auth().verifyIdToken
 jest.mock('../../../config/firebaseAdmin', () => ({
@@ -56,14 +59,14 @@ describe('authenticate middleware', () => {
   //   expect(next).toHaveBeenCalled();
   // });
 
-  // it('should return 401 if authorization header is missing', async () => {
-  //   delete req.headers.authorization;
+  it('should return 401 if authorization header is missing', async () => {
+    delete req.headers.authorization;
 
-  //   await authenticateMiddleware(req, res, next);
+    await authenticateMiddleware(req, res, next);
 
-  //   expect(res.status).toHaveBeenCalledWith(401);
-  //   expect(res.json).toHaveBeenCalledWith({ error: 'Unauthorized - Missing Authorization Header' });
-  // });
+    expect(res.status).toHaveBeenCalledWith(401);
+    expect(res.json).toHaveBeenCalledWith({ error: 'Unauthorized - Missing Authorization Header' });
+  });
 
   // it('should return 403 if user is not found in Prisma', async () => {
   //   (firebaseAdmin.auth().verifyIdToken as jest.Mock).mockResolvedValue({ uid: 'testUID' });

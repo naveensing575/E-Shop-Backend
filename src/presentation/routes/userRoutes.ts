@@ -1,5 +1,5 @@
 import express from "express";
-import { registerUser, loginUserHandler, logoutUserHandler } from "../controllers/userController";
+import { registerUser, loginUserHandler } from "../controllers/userController";
 import authenticate from "../middlewares/authMiddleware";
 
 const router = express.Router();
@@ -11,6 +11,6 @@ router.post("/register", registerUser);
 router.post("/login", loginUserHandler);
 
 // Define the logout route, protected by the authentication middleware
-router.post("/logout", authenticate, logoutUserHandler);
+router.post("/logout", authenticate);
 
 export default router;

@@ -1,8 +1,8 @@
-const { CartService } = require('../../application/cartServices');
-const { createPrismaCartRepository } = require('../../infrastructure/PrismaCartRepository');
+import { CartService } from '../../application/cartServices';
+import { PrismaCartRepository } from '../../infrastructure/PrismaCartRepository';
 
 // Create a concrete implementation of CartRepository
-const mockCartRepository = createPrismaCartRepository();
+const mockCartRepository = PrismaCartRepository;
 
 describe('CartService', () => {
   afterEach(() => {
@@ -46,6 +46,4 @@ describe('CartService', () => {
   });
 });
 
-module.exports = {
-  mockCartRepository,
-};
+export { mockCartRepository };
