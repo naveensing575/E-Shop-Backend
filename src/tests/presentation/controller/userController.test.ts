@@ -54,6 +54,5 @@ describe('User Controller', () => {
       expect(res.status).toHaveBeenCalledWith(200);
       expect(res.json).toHaveBeenCalledWith({ message: 'User logged in successfully' });
     });
-
   });
 });

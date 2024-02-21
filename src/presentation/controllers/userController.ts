@@ -12,14 +12,9 @@ const registerUser = async (req: Request, res: Response) => {
 };
 
 const loginUserHandler = async (req: Request, res: Response) => {
-  try {
     return res.status(200).json({
       message: 'User logged in successfully',
     });
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: 'Internal server error' });
-  }
 };
 
 export { registerUser, loginUserHandler };
