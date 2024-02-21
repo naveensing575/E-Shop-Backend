@@ -1,27 +1,32 @@
-import { CartService } from '../../application/cartServices';
-import { PrismaCartRepository } from '../../infrastructure/PrismaCartRepository';
+import { CartRepository } from '../../domain/CartRepository';
+// import { PrismaCartRepository } from '../infrastructure/PrismaCartRepository';
+import CartService from '../../application/cartServices';
 
-// Create a concrete implementation of CartRepository
-const mockCartRepository = PrismaCartRepository;
+// Mock the CartRepository
+const mockCartRepository: CartRepository = {
+  getCart: jest.fn(),
+  addToCart: jest.fn(),
+  updateCartItem: jest.fn(),
+  removeFromCart: jest.fn(),
+};
 
 describe('CartService', () => {
   afterEach(() => {
-    // Reset mock function calls after each test
     jest.clearAllMocks();
   });
 
   describe('getCart', () => {
-    it('calls getCart method of CartRepository with userId', async () => {
-      const userId = 1;
+    it('should call cartRepository.getCart with correct userId', async () => {
+      const userId = 123;
       await CartService.getCart(userId, mockCartRepository);
       expect(mockCartRepository.getCart).toHaveBeenCalledWith(userId);
     });
   });
 
   describe('addToCart', () => {
-    it('calls addToCart method of CartRepository with userId, productId, and quantity', async () => {
-      const userId = 1;
-      const productId = 123;
+    it('should call cartRepository.addToCart with correct parameters', async () => {
+      const userId = 123;
+      const productId = 456;
       const quantity = 2;
       await CartService.addToCart(userId, productId, quantity, mockCartRepository);
       expect(mockCartRepository.addToCart).toHaveBeenCalledWith(userId, productId, quantity);
@@ -29,21 +34,19 @@ describe('CartService', () => {
   });
 
   describe('updateCartItem', () => {
-    it('calls updateCartItem method of CartRepository with productId and quantity', async () => {
-      const productId = 123;
-      const quantity = 2;
+    it('should call cartRepository.updateCartItem with correct parameters', async () => {
+      const productId = 456;
+      const quantity = 3;
       await CartService.updateCartItem(productId, quantity, mockCartRepository);
       expect(mockCartRepository.updateCartItem).toHaveBeenCalledWith(productId, quantity);
     });
   });
 
   describe('removeFromCart', () => {
-    it('calls removeFromCart method of CartRepository with productId', async () => {
-      const productId = 123;
+    it('should call cartRepository.removeFromCart with correct productId', async () => {
+      const productId = 456;
       await CartService.removeFromCart(productId, mockCartRepository);
       expect(mockCartRepository.removeFromCart).toHaveBeenCalledWith(productId);
     });
   });
 });
-
-export { mockCartRepository };

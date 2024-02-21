@@ -8,10 +8,12 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import logger from "./utils/logger";
 import ErrorHandlerMiddleware from "../presentation/middlewares/errorMiddleware";
+import swaggerDocs from "./utils/swagger";
 
 dotenv.config();
 
 const app = express();
+const port = parseInt(process.env.PORT ?? "4000", 10);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   logger.info(`${req.method} ${req.url}`);
@@ -28,12 +30,14 @@ app.use("/products", productRoutes);
 app.use("/cart", cartRoutes);
 app.use("/orders", orderRoutes);
 
+// Call swaggerDocs function to set up Swagger documentation
+swaggerDocs(app, port);
+
 // Error handling middleware
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   ErrorHandlerMiddleware(err, req, res, next);
 });
 
-const port = process.env.PORT ?? 4000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
