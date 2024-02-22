@@ -10,10 +10,10 @@ const options: swaggerJsdoc.Options = {
     info: {
       title: "E-Shop API Docs",
       description: "E-Shop API Documentation",
-      version: "1.0.0",
+      version
     },
   },
-  apis: ["./src/routes.ts", "./src/schema/schema.yaml"],
+  apis: ["../schema.yaml"],
 };
 
 const swaggerSpec = swaggerJsdoc(options);

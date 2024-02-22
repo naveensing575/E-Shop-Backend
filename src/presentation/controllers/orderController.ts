@@ -6,7 +6,8 @@ async function handleCreateOrder(req: CustomRequest, res: Response, next: NextFu
   const { extractedUser } = req;
 
   if (!extractedUser) {
-    throw new Error('User not authenticated');
+      res.status(401).json({ error: 'User not authenticated' });
+      return;
   }
 
   try {
@@ -25,9 +26,10 @@ async function handleCreateOrder(req: CustomRequest, res: Response, next: NextFu
 async function handleGetOrderById(req: CustomRequest, res: Response, next: NextFunction) {
   const { extractedUser } = req;
 
-  if (!extractedUser) {
-    throw new Error('User not authenticated');
-  }
+    if (!extractedUser) {
+      res.status(401).json({ error: 'User not authenticated' });
+      return;
+    }
 
   try {
     const { userId } = extractedUser;
@@ -46,9 +48,10 @@ async function handleGetOrderById(req: CustomRequest, res: Response, next: NextF
 async function handlePurchaseHistory(req: CustomRequest, res: Response, next: NextFunction) {
   const { extractedUser } = req;
 
-  if (!extractedUser) {
-    throw new Error('User not authenticated');
-  }
+    if (!extractedUser) {
+      res.status(401).json({ error: 'User not authenticated' });
+      return;
+    }
 
   try {
     const { userId } = extractedUser;

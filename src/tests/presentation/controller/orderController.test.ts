@@ -5,11 +5,12 @@ import {
   handleGetOrderById,
 } from '../../../presentation/controllers/orderController';
 import OrderService from '../../../application/orderService';
+import CustomRequest from '../../../presentation/typings/types';
 
 jest.mock('../../../application/orderService');
 
 describe('Order Controller', () => {
-  let mockRequest: any;
+  let mockRequest: CustomRequest | any;
   let mockResponse: Partial<Response>;
   let mockNext: NextFunction;
 
@@ -62,6 +63,17 @@ describe('Order Controller', () => {
 
     expect(mockNext).toHaveBeenCalledWith(mockError);
   });
+
+  it('should handle "User not authenticated" error', async () => {
+    const mockRequest = {
+      body: {},
+    };
+
+    await handleCreateOrder(mockRequest as any, mockResponse as any, mockNext);
+
+    expect(mockResponse.status).toHaveBeenCalledWith(401);
+    expect(mockResponse.json).toHaveBeenCalledWith({ error: 'User not authenticated' });
+    });
   });
 
   describe('handleGetOrderById', () => {
@@ -115,6 +127,17 @@ describe('Order Controller', () => {
 
       expect(mockNext).toHaveBeenCalledWith(mockError);
     });
+
+    it('should handle "User not authenticated" error', async () => {
+    const mockRequest = {
+      body: {},
+    };
+
+    await handleGetOrderById(mockRequest as any, mockResponse as any, mockNext);
+
+    expect(mockResponse.status).toHaveBeenCalledWith(401);
+    expect(mockResponse.json).toHaveBeenCalledWith({ error: 'User not authenticated' });
+    });
   });
 
   describe('handlePurchaseHistory', () => {
@@ -143,6 +166,17 @@ describe('Order Controller', () => {
       await handlePurchaseHistory(mockRequest, mockResponse as Response, mockNext);
 
       expect(mockNext).toHaveBeenCalledWith(mockError);
+    });
+
+    it('should handle "User not authenticated" error', async () => {
+    const mockRequest = {
+      body: {},
+    };
+
+    await handlePurchaseHistory(mockRequest as any, mockResponse as any, mockNext);
+
+    expect(mockResponse.status).toHaveBeenCalledWith(401);
+    expect(mockResponse.json).toHaveBeenCalledWith({ error: 'User not authenticated' });
     });
   });
 });

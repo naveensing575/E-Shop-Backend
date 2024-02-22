@@ -10725,3 +10725,12 @@
 {"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T05:09:19.231Z"}
 {"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T05:11:33.474Z"}
 {"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T05:12:06.434Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T05:16:11.778Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T05:37:05.312Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T05:51:20.683Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T05:52:06.004Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T05:52:07.041Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T05:52:07.131Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T05:52:07.136Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T05:52:07.140Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T05:52:07.154Z"}

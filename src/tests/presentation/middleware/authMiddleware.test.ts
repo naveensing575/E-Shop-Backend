@@ -1,99 +1,86 @@
-import { Response, NextFunction } from 'express';
-import CustomRequest from '../../../presentation/typings/types';
-import { firebaseAdmin } from '../../../config/firebaseAdmin';
+import { Response, NextFunction } from "express";
+import CustomRequest from "../../../presentation/typings/types";
+import { firebaseAdmin } from "../../../config/firebaseAdmin";
 import { PrismaClient } from '@prisma/client';
-import authenticateMiddleware from '../../../presentation/middlewares/authMiddleware';
+import authenticate from '../../../presentation/middlewares/authMiddleware';
 
-// Mock PrismaClient
-jest.mock('@prisma/client', () => {
-  const mockedPrismaClient = {
-    user: {
-      findUnique: jest.fn(),
-    },
-  };
-  return {
-    PrismaClient: jest.fn(() => mockedPrismaClient),
-  };
-});
+const prisma = new PrismaClient();
 
-
-// Mock firebaseAdmin.auth().verifyIdToken
 jest.mock('../../../config/firebaseAdmin', () => ({
   firebaseAdmin: {
-    auth: jest.fn(() => ({
-      verifyIdToken: jest.fn(),
-    })),
+    auth: jest.fn(),
   },
 }));
+jest.mock('@prisma/client');
 
 describe('authenticate middleware', () => {
   let req: CustomRequest;
-  let res: Response;
-  let next: NextFunction;
+  let res: Partial<Response>;
+  let next: jest.MockedFunction<NextFunction>;
 
   beforeEach(() => {
     req = {
-      headers: {
-        authorization: 'Bearer testToken',
-      },
+      headers: {},
     } as CustomRequest;
-    res = { status: jest.fn().mockReturnThis(), json: jest.fn() } as unknown as Response;
-    next = jest.fn() as NextFunction;
+    res = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    };
+    next = jest.fn();
   });
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  // it('should call next() if authorization header is present and valid', async () => {
-  //   const decodedToken = { uid: 'testUID' };
-  //   (firebaseAdmin.auth().verifyIdToken as jest.Mock).mockResolvedValue(decodedToken);
-  //   (PrismaClient as jest.MockedClass<typeof PrismaClient>).user.findUnique.mockResolvedValue({ uid: 'testUID' });
-
-  //   await authenticateMiddleware(req, res, next);
-
-  //   expect(firebaseAdmin.auth().verifyIdToken).toHaveBeenCalledWith('testToken');
-  //   expect(PrismaClient).toHaveBeenCalledTimes(1); // Ensure PrismaClient constructor is called
-  //   expect((PrismaClient as jest.MockedClass<typeof PrismaClient>).user.findUnique).toHaveBeenCalledWith({ where: { uid: 'testUID' } });
-  //   expect(req.user).toEqual(decodedToken);
-  //   expect(next).toHaveBeenCalled();
-  // });
-
   it('should return 401 if authorization header is missing', async () => {
-    delete req.headers.authorization;
-
-    await authenticateMiddleware(req, res, next);
+    await authenticate(req, res as Response, next);
 
     expect(res.status).toHaveBeenCalledWith(401);
-    expect(res.json).toHaveBeenCalledWith({ error: 'Unauthorized - Missing Authorization Header' });
+    expect(res.json).toHaveBeenCalledWith({ error: "Unauthorized - Missing Authorization Header" });
+    expect(next).not.toHaveBeenCalled();
   });
 
-  // it('should return 403 if user is not found in Prisma', async () => {
-  //   (firebaseAdmin.auth().verifyIdToken as jest.Mock).mockResolvedValue({ uid: 'testUID' });
-  //   (PrismaClient as jest.MockedClass<typeof PrismaClient>).user.findUnique.mockResolvedValue(null);
+  it('should return 403 if user is not found in Prisma', async () => {
+    req.headers.authorization = 'Bearer invalidtoken';
 
-  //   await authenticateMiddleware(req, res, next);
+    (firebaseAdmin.auth().verifyIdToken as jest.Mock).mockRejectedValueOnce(new Error('Invalid token'));
 
-  //   expect(res.status).toHaveBeenCalledWith(403);
-  //   expect(res.json).toHaveBeenCalledWith({ error: 'Forbidden - Unauthorized User' });
-  // });
-
-  // it('should return 403 if user UID does not match token UID', async () => {
-  //   (firebaseAdmin.auth().verifyIdToken as jest.Mock).mockResolvedValue({ uid: 'testUID' });
-  //   (PrismaClient as jest.MockedClass<typeof PrismaClient>).user.findUnique.mockResolvedValue({ uid: 'differentUID' });
-
-  //   await authenticateMiddleware(req, res, next);
-
-  //   expect(res.status).toHaveBeenCalledWith(403);
-  //   expect(res.json).toHaveBeenCalledWith({ error: 'Forbidden - Unauthorized User' });
-  // });
-
-  it('should return 403 if token verification fails', async () => {
-    (firebaseAdmin.auth().verifyIdToken as jest.Mock).mockRejectedValue(new Error('Test error'));
-
-    await authenticateMiddleware(req, res, next);
+    await authenticate(req, res as Response, next);
 
     expect(res.status).toHaveBeenCalledWith(403);
-    expect(res.json).toHaveBeenCalledWith({ error: 'Forbidden - Invalid Token' });
+    expect(res.json).toHaveBeenCalledWith({ error: "Forbidden - Invalid Token" });
+    expect(next).not.toHaveBeenCalled();
+  });
+
+  it('should return 403 if user is unauthorized', async () => {
+    const uid = 'validuid';
+    const decodedToken = { uid };
+    req.headers.authorization = 'Bearer validtoken';
+
+    (firebaseAdmin.auth().verifyIdToken as jest.Mock).mockResolvedValueOnce(decodedToken);
+    (prisma.user.findUnique as jest.Mock).mockResolvedValueOnce(null);
+
+    await authenticate(req, res as Response, next);
+
+    expect(res.status).toHaveBeenCalledWith(403);
+    expect(res.json).toHaveBeenCalledWith({ error: "Forbidden - Unauthorized User" });
+    expect(next).not.toHaveBeenCalled();
+  });
+
+  it('should set extractedUser in request and call next if authentication is successful', async () => {
+    const uid = 'validuid';
+    const decodedToken = { uid };
+    const user = { uid, name: 'John Doe' };
+    req.headers.authorization = 'Bearer validtoken';
+
+    (firebaseAdmin.auth().verifyIdToken as jest.Mock).mockResolvedValueOnce(decodedToken);
+    (prisma.user.findUnique as jest.Mock).mockResolvedValueOnce(user);
+
+    await authenticate(req, res as Response, next);
+
+    expect(req.user).toEqual(decodedToken);
+    expect(req.extractedUser).toEqual(user);
+    expect(next).toHaveBeenCalled();
   });
 });
