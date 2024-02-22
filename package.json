@@ -6,8 +6,7 @@
   "scripts": {
     "start": "nodemon src/presentation/index.ts",
     "test": "jest --forceExit --config --detectOpenHandles",
-    "test-coverage": "jest --coverage",
-    "generate-swagger": "swagger-jsdoc -o ./swagger.json src/presentation/routes/*.ts"
+    "test-coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "",

@@ -25,10 +25,21 @@ components:
           type: string
           description: Last name of the user.
         address:
-          type: object
-          description: Address of the user.
-          properties:
-            // Define address properties here
+            type: object
+            description: Address of the user.
+            properties:
+              street:
+                type: string
+                description: Street name.
+              city:
+                type: string
+                description: City name.
+              state:
+                type: string
+                description: State name.
+              zip:
+                type: string
+                description: Zip code.
         phoneNumber:
           type: string
           description: Phone number of the user.

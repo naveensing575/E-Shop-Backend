@@ -8,7 +8,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import logger from "./utils/logger";
 import ErrorHandlerMiddleware from "../presentation/middlewares/errorMiddleware";
-import swaggerDocs from "./utils/swagger";
+import swaggerDocs from "./utils/swagger_docs/swagger";
 
 dotenv.config();
 
@@ -24,14 +24,17 @@ app.use(cors({
   origin: 'http://localhost:3000', 
   credentials: true, 
 }));
+
 app.use(bodyParser.json());
+
+// Call swaggerDocs function to set up Swagger documentation
+swaggerDocs(app, port);
+
 app.use("/", userRoutes);
 app.use("/products", productRoutes);
 app.use("/cart", cartRoutes);
 app.use("/orders", orderRoutes);
 
-// Call swaggerDocs function to set up Swagger documentation
-swaggerDocs(app, port);
 
 // Error handling middleware
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

@@ -10734,3 +10734,218 @@
 {"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T05:52:07.136Z"}
 {"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T05:52:07.140Z"}
 {"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T05:52:07.154Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T06:09:02.378Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T06:09:03.999Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T06:09:04.153Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T06:09:04.177Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T06:09:04.178Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T06:09:04.179Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T06:21:53.115Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T06:21:54.115Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T06:21:54.150Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T06:21:54.154Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T06:21:54.162Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T06:21:54.165Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T06:23:35.180Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T06:24:09.866Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T06:24:11.209Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T06:24:11.236Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T06:24:11.237Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T06:24:11.241Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T06:24:11.245Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T06:25:00.873Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T06:25:00.906Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T06:25:00.910Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T06:25:00.913Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T06:25:00.921Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T06:25:01.050Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T06:54:56.899Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T06:54:58.421Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T06:54:58.447Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T06:54:58.451Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T06:54:58.455Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T06:54:58.457Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T06:54:58.792Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T06:54:59.860Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T06:54:59.885Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T06:54:59.887Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T06:54:59.889Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T06:54:59.894Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T06:55:00.010Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T06:55:00.071Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T06:55:00.098Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T06:55:00.100Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T06:55:00.101Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T06:55:00.104Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T06:55:00.216Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T06:55:00.369Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T06:55:00.395Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T06:55:00.397Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T06:55:00.399Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T06:55:00.400Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T06:55:00.508Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T06:57:21.341Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T06:57:22.378Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T06:57:22.413Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T06:57:22.415Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T06:57:22.418Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T06:57:22.420Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T06:57:22.970Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T06:57:46.593Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T06:57:49.891Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T06:57:49.918Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T06:57:49.921Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T06:57:49.926Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T06:57:49.927Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T06:57:50.112Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T06:57:50.746Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T06:57:50.775Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T06:57:50.778Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T06:57:50.781Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T06:57:50.783Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T06:57:50.943Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T06:57:51.094Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T06:57:51.117Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T06:57:51.120Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T06:57:51.122Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T06:57:51.123Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T06:57:51.287Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T07:02:11.053Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T07:02:11.194Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T07:02:11.236Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T07:02:11.240Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T07:02:11.243Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T07:02:11.248Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T07:02:11.834Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T07:02:18.116Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T07:02:18.142Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T07:02:18.145Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T07:02:18.146Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T07:02:18.148Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T07:02:18.254Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T07:02:31.915Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T07:02:42.612Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T07:02:42.649Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T07:02:42.691Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T07:02:42.695Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T07:02:42.698Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T07:02:42.704Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T07:02:42.830Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T07:03:07.521Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T07:03:09.167Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T07:03:09.187Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T07:03:09.190Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T07:03:09.195Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T07:03:09.197Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T07:03:09.293Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T07:03:29.561Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T07:03:30.916Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T07:03:30.942Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T07:03:30.945Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T07:03:30.949Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T07:03:30.951Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T07:03:31.061Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T07:03:31.742Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T07:03:31.764Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T07:03:31.767Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T07:03:31.770Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T07:03:31.774Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T07:03:31.948Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T07:03:32.436Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T07:03:32.462Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T07:03:32.464Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T07:03:32.468Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T07:03:32.471Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T07:03:32.648Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T07:03:32.941Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T07:03:32.963Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T07:03:32.966Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T07:03:32.971Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T07:03:32.972Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T07:03:33.092Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T07:03:33.207Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T07:03:33.224Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T07:03:33.226Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T07:03:33.228Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T07:03:33.228Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T07:03:33.361Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T07:06:16.330Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T07:07:01.037Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T07:07:12.130Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T07:07:19.694Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T07:07:20.123Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T07:07:20.152Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T07:07:20.156Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T07:07:20.160Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T07:07:20.162Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T07:07:20.719Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T07:10:23.871Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T07:10:23.912Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T07:10:23.914Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T07:10:23.918Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T07:10:23.920Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T07:10:24.155Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T07:10:25.990Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T07:10:26.017Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T07:10:26.020Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T07:10:26.022Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T07:10:26.024Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T07:10:26.185Z"}
+{"level":"info","message":"GET /","timestamp":"2024-02-22T07:10:27.788Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T07:10:30.750Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T07:10:30.775Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T07:10:30.776Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T07:10:30.782Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T07:10:30.784Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T07:10:47.030Z"}
+{"level":"info","message":"GET /api-docs/","timestamp":"2024-02-22T07:10:51.883Z"}
+{"level":"info","message":"GET /api-docs/swagger-ui.css","timestamp":"2024-02-22T07:10:51.909Z"}
+{"level":"info","message":"GET /api-docs/swagger-ui-bundle.js","timestamp":"2024-02-22T07:10:51.915Z"}
+{"level":"info","message":"GET /api-docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T07:10:51.918Z"}
+{"level":"info","message":"GET /api-docs/swagger-ui-init.js","timestamp":"2024-02-22T07:10:51.920Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T07:11:19.633Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T07:11:21.254Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T07:11:21.463Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T07:11:21.467Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T07:11:21.476Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T07:11:21.480Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T07:11:22.426Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T07:13:04.413Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T07:13:06.028Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T07:13:06.071Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T07:13:06.074Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T07:13:06.081Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T07:13:06.083Z"}
+{"level":"info","message":"GET /cart","timestamp":"2024-02-22T07:13:20.038Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T07:16:24.737Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T07:16:27.898Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T07:16:27.925Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T07:16:27.928Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T07:16:27.932Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T07:16:27.934Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T07:16:28.522Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T07:16:30.815Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T07:16:30.844Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T07:16:30.846Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T07:16:30.848Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T07:16:30.851Z"}
+{"level":"info","message":"GET /cart","timestamp":"2024-02-22T07:16:41.638Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T07:19:11.178Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T07:19:13.209Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T07:19:13.289Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T07:19:13.296Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T07:19:13.301Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T07:19:13.304Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T07:19:14.224Z"}
+{"level":"info","message":"POST /users/register","timestamp":"2024-02-22T07:19:41.052Z"}
+{"level":"info","message":"POST /users/register","timestamp":"2024-02-22T07:20:05.250Z"}
+{"level":"info","message":"POST /users/login","timestamp":"2024-02-22T07:20:22.316Z"}
+{"level":"info","message":"GET /orders/history","timestamp":"2024-02-22T07:21:33.979Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T07:23:51.902Z"}
+{"level":"info","message":"Docs available at http://localhost:4000/docs","timestamp":"2024-02-22T07:24:07.035Z"}
+{"level":"info","message":"GET /docs/","timestamp":"2024-02-22T07:24:11.260Z"}
+{"level":"info","message":"GET /docs/swagger-ui.css","timestamp":"2024-02-22T07:24:11.285Z"}
+{"level":"info","message":"GET /docs/swagger-ui-bundle.js","timestamp":"2024-02-22T07:24:11.288Z"}
+{"level":"info","message":"GET /docs/swagger-ui-standalone-preset.js","timestamp":"2024-02-22T07:24:11.291Z"}
+{"level":"info","message":"GET /docs/swagger-ui-init.js","timestamp":"2024-02-22T07:24:11.296Z"}
+{"level":"info","message":"GET /docs/favicon-32x32.png","timestamp":"2024-02-22T07:24:11.905Z"}
