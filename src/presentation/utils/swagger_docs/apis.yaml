@@ -4,7 +4,7 @@ info:
   title: "API Documentation"
 basePath: "/"
 schemes:
-  - "http"
+  - "https"
 paths:
   /cart:
     get:
@@ -21,6 +21,8 @@ paths:
           description: Unauthorized
         '500':
           description: Internal server error
+
+  /cart/add:
     post:
       summary: Add item to cart
       description: Add an item to the user's cart
@@ -38,9 +40,11 @@ paths:
                 itemId:
                   type: string
                   description: ID of the product to add to cart
+                  example: "1"
                 quantity:
                   type: number
                   description: Quantity of the product to add to cart
+                  example: 2
               required:
                 - itemId
                 - quantity
@@ -51,6 +55,8 @@ paths:
           description: Unauthorized
         '500':
           description: Internal server error
+
+  /cart/update/{cartItemId}:
     put:
       summary: Update cart item
       description: Update the quantity of a specific item in the user's cart
@@ -75,6 +81,7 @@ paths:
                 quantity:
                   type: number
                   description: New quantity of the item in the cart
+                  example: 3
               required:
                 - quantity
       responses:
@@ -84,6 +91,8 @@ paths:
           description: Unauthorized
         '500':
           description: Internal server error
+
+  /cart/delete/{cartItemId}:
     delete:
       summary: Remove item from cart
       description: Remove a specific item from the user's cart
