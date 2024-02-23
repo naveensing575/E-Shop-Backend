@@ -8,6 +8,7 @@ export const PrismaCartRepository: CartRepository = {
     try {
     const shoppingCart = await prisma.shoppingCart.findUnique({
       where: { userId: userId },
+      include: { CartItem: true },
     });
 
     if (!shoppingCart) {
