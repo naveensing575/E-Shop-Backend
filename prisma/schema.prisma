@@ -7,6 +7,7 @@ datasource db {
 // Prisma Client generator
 generator client {
   provider = "prisma-client-js"
+  output   = "./generated/client"
 }
 
 // User table for storing user information
