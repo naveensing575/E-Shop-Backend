@@ -1,0 +1,215 @@
+openapi: 3.0.0
+info:
+  title: Prisma Schema Documentation
+  version: 1.0.0
+  description: Documentation for the Prisma schema
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        uid:
+          type: string
+          description: Unique identifier for the user.
+        userId:
+          type: integer
+          description: Auto-incremented user ID.
+        email:
+          type: string
+          description: Email address of the user.
+        firstName:
+          type: string
+          description: First name of the user.
+        lastName:
+          type: string
+          description: Last name of the user.
+        address:
+            type: object
+            description: Address of the user.
+            properties:
+              street:
+                type: string
+                description: Street name.
+              city:
+                type: string
+                description: City name.
+              state:
+                type: string
+                description: State name.
+              zip:
+                type: string
+                description: Zip code.
+        phoneNumber:
+          type: string
+          description: Phone number of the user.
+        active:
+          type: boolean
+          description: Indicates whether the user is active or not.
+
+    Product:
+      type: object
+      properties:
+        productId:
+          type: integer
+          description: Auto-incremented product ID.
+        productName:
+          type: string
+          description: Name of the product.
+        productDescription:
+          type: string
+          description: Description of the product.
+        productDetails:
+          type: string
+          description: Details of the product.
+        categoryId:
+          type: integer
+          description: ID of the category to which the product belongs.
+        price:
+          type: number
+          format: float
+          description: Price of the product.
+        image:
+          type: string
+          description: URL of the product image.
+        quantity:
+          type: integer
+          description: Quantity of the product.
+        rating:
+          type: number
+          format: float
+          description: Rating of the product.
+        reviews:
+          type: object
+          description: Reviews of the product.
+        active:
+          type: boolean
+          description: Indicates whether the product is active or not.
+        updatedAt:
+          type: string
+          format: date-time
+          description: Date and time when the product was last updated.
+
+    Category:
+      type: object
+      properties:
+        categoryId:
+          type: integer
+          description: Auto-incremented category ID.
+        categoryName:
+          type: string
+          description: Name of the category.
+        active:
+          type: boolean
+          description: Indicates whether the category is active or not.
+
+    Order:
+      type: object
+      properties:
+        orderId:
+          type: integer
+          description: Auto-incremented order ID.
+        userId:
+          type: integer
+          description: ID of the user who placed the order.
+        orderDate:
+          type: string
+          format: date-time
+          description: Date and time when the order was placed.
+        status:
+          type: string
+          description: Status of the order.
+        active:
+          type: boolean
+          description: Indicates whether the order is active or not.
+
+    OrderDetail:
+      type: object
+      properties:
+        orderDetailId:
+          type: integer
+          description: Auto-incremented order detail ID.
+        orderId:
+          type: integer
+          description: ID of the order.
+        productId:
+          type: integer
+          description: ID of the product in the order detail.
+        quantity:
+          type: integer
+          description: Quantity of the product in the order detail.
+        subtotal:
+          type: number
+          format: float
+          description: Subtotal of the product in the order detail.
+        active:
+          type: boolean
+          description: Indicates whether the order detail is active or not.
+
+    ShoppingCart:
+      type: object
+      properties:
+        shoppingCartId:
+          type: integer
+          description: Auto-incremented shopping cart ID.
+        userId:
+          type: integer
+          description: ID of the user who owns the shopping cart.
+        active:
+          type: boolean
+          description: Indicates whether the shopping cart is active or not.
+
+    CartItem:
+      type: object
+      properties:
+        cartItemId:
+          type: integer
+          description: Auto-incremented cart item ID.
+        quantity:
+          type: integer
+          description: Quantity of the product in the cart item.
+        productId:
+          type: integer
+          description: ID of the product in the cart item.
+        shoppingCartId:
+          type: integer
+          description: ID of the shopping cart to which the cart item belongs.
+        active:
+          type: boolean
+          description: Indicates whether the cart item is active or not.
+
+    PurchaseHistory:
+      type: object
+      properties:
+        purchaseHistoryId:
+          type: integer
+          description: Auto-incremented purchase history ID.
+        userId:
+          type: integer
+          description: ID of the user who owns the purchase history.
+        active:
+          type: boolean
+          description: Indicates whether the purchase history is active or not.
+
+    PurchasedProduct:
+      type: object
+      properties:
+        purchasedProductId:
+          type: integer
+          description: Auto-incremented purchased product ID.
+        quantity:
+          type: integer
+          description: Quantity of the product in the purchased product.
+        productId:
+          type: integer
+          description: ID of the product in the purchased product.
+        purchaseHistoryId:
+          type: integer
+          description: ID of the purchase history to which the purchased product belongs.
+        purchasedDate:
+          type: string
+          format: date-time
+          description: Date and time when the product was purchased.
+        active:
+          type: boolean
+          description: Indicates whether the purchased product is active or not.

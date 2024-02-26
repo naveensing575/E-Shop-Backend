@@ -11,14 +11,14 @@ generator client {
 
 // User table for storing user information
 model User {
-  userId      Int      @id @default(autoincrement())
-  email       String   @unique
+  uid         String  @unique
+  userId      Int     @id @default(autoincrement())
+  email       String  @unique
   firstName   String
   lastName    String
-  dateOfBirth DateTime @map("date") // Map to a database column of type DATE
   address     Json
   phoneNumber String
-  active      Boolean  @default(true)
+  active      Boolean @default(true)
 
   shoppingCart    ShoppingCart?
   PurchaseHistory PurchaseHistory[]
@@ -27,11 +27,18 @@ model User {
 
 // Product table for storing information about products
 model Product {
-  productId   Int     @id @default(autoincrement())
-  productName String
-  categoryId  Int
-  price       Float
-  active      Boolean @default(true)
+  productId          Int      @id @default(autoincrement())
+  productName        String
+  productDescription String
+  productDetails     String
+  categoryId         Int
+  price              Float
+  image              String
+  quantity           Int
+  rating             Float
+  reviews            Json
+  active             Boolean  @default(true)
+  updatedAt          DateTime @default(now()) @updatedAt
 
   category         Category           @relation(fields: [categoryId], references: [categoryId])
   CartItem         CartItem[]
@@ -51,7 +58,7 @@ model Category {
 model Order {
   orderId   Int      @id @default(autoincrement())
   userId    Int
-  orderDate DateTime
+  orderDate DateTime @default(now())
   status    String
   active    Boolean  @default(true)
 
@@ -106,11 +113,12 @@ model PurchaseHistory {
 
 // PurchasedProduct table for storing individual products in the purchase history
 model PurchasedProduct {
-  purchasedProductId Int     @id @default(autoincrement())
+  purchasedProductId Int      @id @default(autoincrement())
   quantity           Int
   productId          Int
   purchaseHistoryId  Int
-  active             Boolean @default(true)
+  purchasedDate      DateTime @default(now())
+  active             Boolean  @default(true)
 
   product         Product         @relation(fields: [productId], references: [productId])
   purchaseHistory PurchaseHistory @relation(fields: [purchaseHistoryId], references: [purchaseHistoryId])
